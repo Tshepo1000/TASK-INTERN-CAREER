@@ -3,6 +3,7 @@
 <Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -24,18 +25,18 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               <Component id="jP" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="27" max="32767" attributes="0"/>
-              <Component id="jP" min="-2" max="-2" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="jP" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="65" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -101,8 +102,8 @@
                                   <Component id="btn3" min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="btn6" min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="btn9" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="btnequals" min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="btnC" min="-2" pref="53" max="-2" attributes="0"/>
+                                  <Component id="btnPerc" min="-2" pref="53" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -113,6 +114,7 @@
                                   <Component id="btnPM" min="-2" pref="53" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="btnequals" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel1" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -134,7 +136,7 @@
                       <Component id="btnC" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnPM" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="30" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn7" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn8" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
@@ -159,10 +161,12 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn0" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btncom" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnequals" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnadd" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnPerc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                  <EmptySpace pref="29" max="32767" attributes="0"/>
+                  <Component id="btnequals" min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -515,7 +519,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="BSC"/>
+            <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBSPActionPerformed"/>
@@ -591,6 +595,26 @@
             </Property>
             <Property name="text" type="java.lang.String" value="BasicMath"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnPerc">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Berlin Sans FB Demi" size="14" style="1"/>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="0" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="%"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPercActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
