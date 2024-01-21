@@ -69,7 +69,7 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="results" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="btnBSP" min="-2" pref="53" max="-2" attributes="0"/>
@@ -96,6 +96,7 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                       <Component id="btncom" min="-2" pref="53" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="btnequals" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
@@ -104,17 +105,25 @@
                                   <Component id="btn9" min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="btnC" min="-2" pref="53" max="-2" attributes="0"/>
                                   <Component id="btnPerc" min="-2" pref="53" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnadd" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="btnsub" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="btnmulti" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="btndiv" min="-2" pref="53" max="-2" attributes="0"/>
-                                  <Component id="btnPM" min="-2" pref="53" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="btnsub" min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="btnmulti" min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="btndiv" min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="btnSqrt" min="-2" pref="53" max="-2" attributes="0"/>
+                                          <Component id="btnExp" min="-2" pref="53" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Component id="btnPM" min="-2" pref="53" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
-                          <Component id="btnequals" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel1" min="-2" pref="78" max="-2" attributes="0"/>
                   </Group>
@@ -141,31 +150,35 @@
                       <Component id="btn7" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn8" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn9" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btndiv" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnExp" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn4" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn5" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn6" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnmulti" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnSqrt" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn2" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btn3" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnsub" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btndiv" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn0" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btncom" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
-                      <Component id="btnadd" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                       <Component id="btnPerc" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnmulti" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="29" max="32767" attributes="0"/>
-                  <Component id="btnequals" min="-2" pref="33" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="btnequals" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnadd" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="btnsub" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -511,13 +524,10 @@
         <Component class="javax.swing.JButton" name="btnBSP">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Berlin Sans FB Demi" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&lt;&lt;"/>
           </Properties>
@@ -531,13 +541,10 @@
         <Component class="javax.swing.JButton" name="btnCE">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Berlin Sans FB Demi" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="CE"/>
           </Properties>
@@ -551,13 +558,10 @@
         <Component class="javax.swing.JButton" name="btnC">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Berlin Sans FB Demi" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="C"/>
           </Properties>
@@ -571,13 +575,10 @@
         <Component class="javax.swing.JButton" name="btnPM">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="99" green="0" red="0" type="rgb"/>
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Berlin Sans FB Demi" size="18" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="cc" type="rgb"/>
             </Property>
             <Property name="text" type="java.lang.String" value="&#xb1;"/>
           </Properties>
@@ -611,6 +612,40 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPercActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnSqrt">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Berlin Sans FB Demi" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="&#x221a;2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSqrtActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JButton" name="btnExp">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="1f" green="c1" red="42" type="rgb"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Berlin Sans FB Demi" size="14" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="^"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnExpActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="0"/>
