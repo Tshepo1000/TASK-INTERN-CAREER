@@ -202,13 +202,15 @@ public class Login extends javax.swing.JFrame
         String userName = usernameTxt.getText();
         String userPassWord = passwordTxt.getText();
 
+        int attempts = 0; //unsuccessful login attempts
+
         try
         {  
 
             //user input validation
             if(usernameTxt.getText().length() < 1 || passwordTxt.getText().length() < 1 || roleCbx.getSelectedItem() == "Select role")
             {
-                JOptionPane.showMessageDialog(rootPane, "All Fields Are Mandatory!");
+                JOptionPane.showMessageDialog(rootPane, "All Fields Are Mandatory!"); //rules of form filling
             }
             else{
                 //sql query for username and password comparisons
@@ -222,15 +224,24 @@ public class Login extends javax.swing.JFrame
 
                 if(resultset.next())
                 {
-                    JOptionPane.showMessageDialog(rootPane, "Successful");
+                    JOptionPane.showMessageDialog(rootPane, "Successful"); //successful login attempt
+                    new Home().setVisible(true); //displays home_page frame is login in successfull
+                    new Login().setVisible(false); //hides login page
+                    
                 }
                 else    
                 {
-                    JOptionPane.showMessageDialog(rootPane, "Unsuccessful login attempt");
+                    JOptionPane.showMessageDialog(rootPane, "Unsuccessful login attempt"); //Unsuccessful login attempt(general message for security reasons)
+                    attempts++;
+                    if(attempts > 3)
+                    {
+                        JOptionPane.showMessageDialog(rootPane, "Too many incorrect tries.");
+                        new Login().dispose();
+                    }
                 }
             }
         }
-        catch(HeadlessException | SQLException e)
+        catch(HeadlessException | SQLException e) //catch exceptions for DB related exceptions
         {
             JOptionPane.showMessageDialog(rootPane, "Something went wrong");
         }
