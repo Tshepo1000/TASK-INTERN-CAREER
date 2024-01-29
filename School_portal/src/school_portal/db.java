@@ -11,7 +11,7 @@ public class db
     public static Connection myCon()
     {
         // JDBC URL, username, and password of MySQL server
-        String url = "jdbc:mysql://localhost:3306/school_system?useSSL=false";
+        String url = "jdbc:mysql://localhost:3306/school_system?allowPublicKeyRetrieval=true&useSSL=false";
         String user = "Tshepo";
         String password = "&RWjJH/8A6q$B/B";
 

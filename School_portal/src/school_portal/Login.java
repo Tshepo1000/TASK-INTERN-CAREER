@@ -27,9 +27,10 @@ public class Login extends javax.swing.JFrame
         initComponents();    
         connection = db.myCon(); 
 
-        imagePanel = new ImagePanel(new ImageIcon("C:\\Users\\Tshepo T Sekete\\Desktop\\TASK-INTERN-CAREER\\School_portal\\images\\college-students.jpg").getImage());
+        imagePanel = new ImagePanel(new ImageIcon("C:\\Users\\Tshepo T Sekete\\Desktop\\TASK-INTERN-CAREER\\School_portal\\images\\R.jpeg").getImage());
         imagePanel.setLayout(null);  // Set layout to null for absolute positioning of components
-        setContentPane(imagePanel);  
+        setContentPane(imagePanel); 
+        imagePanel.setBackground(new Color(0, 0, 0)); 
 
         imagePanel.add(jLabel1);
         imagePanel.add(usernameTxt);
@@ -98,13 +99,14 @@ public class Login extends javax.swing.JFrame
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Login");
 
         usernameTxt.setBackground(new java.awt.Color(0, 0, 0, 0));
         usernameTxt.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 18)); // NOI18N
-        usernameTxt.setForeground(new java.awt.Color(102, 102, 102));
+        usernameTxt.setForeground(new java.awt.Color(204, 204, 204));
         usernameTxt.setText("Username");
-        usernameTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        usernameTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         usernameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 usernameTxtFocusGained(evt);
@@ -113,24 +115,49 @@ public class Login extends javax.swing.JFrame
                 usernameTxtFocusLost(evt);
             }
         });
+        usernameTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                usernameTxtKeyTyped(evt);
+            }
+        });
 
-        loginBtn.setBackground(new java.awt.Color(0, 0, 0));
+        loginBtn.setBackground(new Color(0, 0, 0));
         loginBtn.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
+        loginBtn.setForeground(new java.awt.Color(255, 255, 255));
         loginBtn.setText("Login");
-        loginBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        loginBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         loginBtn.setContentAreaFilled(false);
         loginBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginBtn.setRequestFocusEnabled(false);
+        loginBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                loginBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                loginBtnMouseExited(evt);
+            }
+        });
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginBtnActionPerformed(evt);
             }
         });
 
+        clearBtn.setBackground(new Color(0, 0, 0));
         clearBtn.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 12)); // NOI18N
+        clearBtn.setForeground(new java.awt.Color(255, 255, 255));
         clearBtn.setText("Clear");
-        clearBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        clearBtn.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 255), 1, true));
         clearBtn.setContentAreaFilled(false);
         clearBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        clearBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                clearBtnMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                clearBtnMouseExited(evt);
+            }
+        });
         clearBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 clearBtnActionPerformed(evt);
@@ -139,13 +166,17 @@ public class Login extends javax.swing.JFrame
 
         roleCbx.setBackground(new java.awt.Color(0, 0, 0, 0));
         roleCbx.setFont(new java.awt.Font("MS Reference Sans Serif", 0, 24)); // NOI18N
-        roleCbx.setForeground(new java.awt.Color(102, 102, 102));
+        roleCbx.setForeground(new java.awt.Color(255, 255, 255));
         roleCbx.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select role", "Student", "Teacher" }));
-        roleCbx.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        roleCbx.setToolTipText("");
+        roleCbx.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
+        roleCbx.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        roleCbx.setOpaque(false);
 
+        jLabel5.setForeground(new java.awt.Color(255, 255, 153));
         jLabel5.setText("forgot your your password? click");
 
-        forgotPassBtn.setForeground(new java.awt.Color(0, 0, 204));
+        forgotPassBtn.setForeground(new java.awt.Color(153, 153, 255));
         forgotPassBtn.setText("here");
         forgotPassBtn.setBorder(null);
         forgotPassBtn.setBorderPainted(false);
@@ -154,9 +185,10 @@ public class Login extends javax.swing.JFrame
         forgotPassBtn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         forgotPassBtn.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        jLabel6.setForeground(new java.awt.Color(255, 255, 153));
         jLabel6.setText("not a memeber yet? ");
 
-        signupBtn.setForeground(new java.awt.Color(0, 0, 204));
+        signupBtn.setForeground(new java.awt.Color(153, 153, 255));
         signupBtn.setText("sign-up");
         signupBtn.setBorder(null);
         signupBtn.setBorderPainted(false);
@@ -172,9 +204,9 @@ public class Login extends javax.swing.JFrame
 
         passwordTxt.setBackground(new java.awt.Color(0, 0, 0, 0));
         passwordTxt.setFont(new java.awt.Font("MS Reference Sans Serif", 1, 24)); // NOI18N
-        passwordTxt.setForeground(new java.awt.Color(102, 102, 102));
+        passwordTxt.setForeground(new java.awt.Color(204, 204, 204));
         passwordTxt.setText("Password");
-        passwordTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        passwordTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(204, 204, 204)));
         passwordTxt.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 passwordTxtFocusGained(evt);
@@ -259,6 +291,7 @@ public class Login extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // login button events
@@ -355,6 +388,7 @@ public class Login extends javax.swing.JFrame
         {
             usernameTxt.setText("");
         }
+        usernameTxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_usernameTxtFocusGained
 
     private void usernameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusLost
@@ -362,6 +396,7 @@ public class Login extends javax.swing.JFrame
         {
             usernameTxt.setText("Username");
         }
+        usernameTxt.setForeground(new Color(204, 204, 204));
     }//GEN-LAST:event_usernameTxtFocusLost
 
     private void passwordTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusGained
@@ -369,6 +404,7 @@ public class Login extends javax.swing.JFrame
         {
             passwordTxt.setText("");
         }
+        passwordTxt.setForeground(Color.WHITE);
     }//GEN-LAST:event_passwordTxtFocusGained
 
     private void passwordTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusLost
@@ -376,7 +412,37 @@ public class Login extends javax.swing.JFrame
         {
             passwordTxt.setText("Password");
         }
+        passwordTxt.setForeground(new Color(204, 204, 204));
     }//GEN-LAST:event_passwordTxtFocusLost
+
+    private void loginBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseEntered
+        loginBtn.setBackground(new Color(0, 0, 0));
+        loginBtn.setForeground(Color.YELLOW);
+        loginBtn.setBorder(new javax.swing.border.LineBorder(Color.BLUE, 2, true)); 
+
+    }//GEN-LAST:event_loginBtnMouseEntered
+
+    private void loginBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginBtnMouseExited
+        loginBtn.setBackground(Color.BLACK);
+        loginBtn.setForeground(Color.WHITE);
+        loginBtn.setBorder(new javax.swing.border.LineBorder(Color.WHITE, 1, true));
+    }//GEN-LAST:event_loginBtnMouseExited
+
+    private void clearBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBtnMouseEntered
+        clearBtn.setBackground(new Color(0, 0, 0));
+        clearBtn.setForeground(Color.YELLOW);
+        clearBtn.setBorder(new javax.swing.border.LineBorder(Color.BLUE, 2, true));
+    }//GEN-LAST:event_clearBtnMouseEntered
+
+    private void clearBtnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBtnMouseExited
+        clearBtn.setBackground(Color.BLACK);
+        clearBtn.setForeground(Color.WHITE);
+        clearBtn.setBorder(new javax.swing.border.LineBorder(Color.WHITE, 1, true));
+    }//GEN-LAST:event_clearBtnMouseExited
+
+    private void usernameTxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTxtKeyTyped
+//        usernameTxt.setForeground(Color.WHITE);
+    }//GEN-LAST:event_usernameTxtKeyTyped
 
     /**
      * @param args the command line arguments
