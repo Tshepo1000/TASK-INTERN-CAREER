@@ -324,8 +324,12 @@ public class Login extends javax.swing.JFrame
                 if(resultset.next())
                 {
                     JOptionPane.showMessageDialog(rootPane, "Successful"); //successful login attempt
-                    new Home().setVisible(true); //displays home_page frame is login in successfull
-                    new Login().setVisible(false); //hides login page
+                    if(roleCbx.getSelectedItem().toString().equals("Student")){
+                        new StudentsHP().setVisible(true); //displays home_page frame is login in 
+                    }else{
+                        new TeachersHP().setVisible(true);
+                    }
+                    this.setVisible(false); //hides login page
                     
                 }
                 else    
@@ -382,7 +386,7 @@ public class Login extends javax.swing.JFrame
 
     private void signupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBtnActionPerformed
         new Register().setVisible(true);
-        new Login().setVisible(false);
+        this.setVisible(false);
     }//GEN-LAST:event_signupBtnActionPerformed
 
     private void usernameTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusGained
