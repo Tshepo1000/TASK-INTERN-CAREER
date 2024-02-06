@@ -94,6 +94,7 @@ public class Login extends javax.swing.JFrame
         passwordTxt = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(11, 12, 116));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -280,9 +281,7 @@ public class Login extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -297,6 +296,7 @@ public class Login extends javax.swing.JFrame
         // login button events
         String userName = usernameTxt.getText();
         String userPassWord = "";
+        String userRole = roleCbx.getSelectedItem().toString();
         for(char c: passwordTxt.getPassword())
         {
             userPassWord += c;
@@ -312,11 +312,12 @@ public class Login extends javax.swing.JFrame
             }
             else{
                 //sql query for username and password comparisons
-                String sql = " SELECT * FROM users WHERE User_Name=? AND Password=? ";
+                String sql = " SELECT * FROM users WHERE User_Name=? AND Password=? AND Role=?";
                 preparedstatement = connection.prepareCall(sql);
 
                 preparedstatement.setString(1, userName); //username
                 preparedstatement.setString(2, userPassWord); //password
+                preparedstatement.setString(3, userRole); //role
 
                 resultset = preparedstatement.executeQuery();
 
@@ -367,8 +368,8 @@ public class Login extends javax.swing.JFrame
 
     private void clearBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearBtnActionPerformed
         // clears information input
-        String userInput = "";
-        String passwordInput = "";
+        String userInput = "Username";
+        String passwordInput = "Password";
   
         if(usernameTxt.getText().length() > 0 || passwordTxt.getPassword().length > 0)
         {
@@ -380,7 +381,8 @@ public class Login extends javax.swing.JFrame
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void signupBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signupBtnActionPerformed
-        // TODO add your handling code here:
+        new Register().setVisible(true);
+        new Login().setVisible(false);
     }//GEN-LAST:event_signupBtnActionPerformed
 
     private void usernameTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_usernameTxtFocusGained
