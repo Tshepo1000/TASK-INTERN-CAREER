@@ -13,6 +13,10 @@ import java.awt.Color;
 import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 class ImagePanel extends JPanel {
     private Image backgroundImage;
@@ -435,77 +439,42 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_registerBtnMouseExited
 
     private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
-        // register button events
-//        String userName = usernameTxt.getText();
-//        String userPassWord = "";
-//        for(char c: passwordTxt.getPassword())
-//        {
-//            userPassWord += c;
-//        }
-//
-//        try
-//        {
-//
-//            //user input validation
-//            if(usernameTxt.getText().length() < 1 || passwordTxt.getPassword().length < 1 || roleCbx.getSelectedItem() == "Select role")
-//            {
-//                JOptionPane.showMessageDialog(rootPane, "All Fields Are Mandatory!"); //rules of form filling
-//            }
-//            else{
-//                //sql query for username and password comparisons
-//                String sql = " SELECT * FROM users WHERE User_Name=? AND Password=? ";
-//                preparedstatement = connection.prepareCall(sql);
-//
-//                preparedstatement.setString(1, userName); //username
-//                preparedstatement.setString(2, userPassWord); //password
-//
-//                resultset = preparedstatement.executeQuery();
-//
-//                if(resultset.next())
-//                {
-//                    JOptionPane.showMessageDialog(rootPane, "Successful"); //successful login attempt
-//                    new Home().setVisible(true); //displays home_page frame is login in successfull
-//                    new Login().setVisible(false); //hides login page
-//
-//                }
-//                else
-//                {
-//                    JOptionPane.showMessageDialog(rootPane, "Unsuccessful login attempt"); //Unsuccessful login attempt(general message for security reasons)
-//                    clearBtnActionPerformed(evt); //clears fields if login is unsuccssful
-//                    attempts++;//increment attempts per failed request
-//                    if(attempts > 2)
-//                    {
-//                        JOptionPane.showMessageDialog(rootPane, "Too many incorrect tries.");//displays this message if condition is met
-//                        System.exit(0);//exit the app if condition is met
-//                    }
-//                }
-//            }
-//        }
-//        catch(HeadlessException | SQLException e) //catch exceptions for DB related exceptions
-//        {
-//            JOptionPane.showMessageDialog(rootPane, "Something went wrong");
-//        }
-//        finally
-//        {
-//            // Close resources in a finally block to ensure they are closed even if an exception occurs
-//            try
-//            {
-//                if (resultset != null)
-//                {
-//                    resultset.close();
-//                }
-//                if (preparedstatement != null)
-//                {
-//                    preparedstatement.close();
-//                }
-//            }
-//            catch (SQLException ex)
-//            {
-//                JOptionPane.showMessageDialog(rootPane, "Something went wrong");
-//            }
-//        }
+        String name = nameTxt.getText();    
+        String surname = surnameTxt.getText();
+        String email = emailTxt.getText();
+        String phone = phoneTxt.getText();
+        String password = passwordTxt.getText();
+        String confirmPass = confPasswordTxt.getText(); 
+        String role = roleCbx.getSelectedItem().toString();    
 
-         
+        try
+        {
+            
+            //user input validation
+            if(name != "Name" && name.length() > 0 && surname != "Surname" && surname.length() > 0 && email != "Email" && email.length() > 0 && phone != "Mobile No" && phone.length() > 0 && password != "Password" && password.length() > 0 && confirmPass != "Password" && confirmPass.length() > 0 && role != "Select role")
+            {   
+                Statement s = db.myCon().createStatement();
+                if(password.equals(confirmPass) && password.length() >= 8)
+                {
+                    s.executeUpdate("INSERT INTO users (Name, Surname, User_Name, Email, Phone, Password, Role)" + "VALUES ('"+name+"', '"+surname+"','"+email+"', '"+email+"', '"+phone+"', '"+password+"', '"+role+"')");
+
+                    JOptionPane.showMessageDialog(rootPane, "Account created successfully.");
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Password and Confirm Password must match, and be not less than 8 characters.");
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(rootPane, "Please fill in all required fields");
+            }
+        }
+        catch(HeadlessException | SQLException e) //catch exceptions for DB related exceptions
+        {
+//            JOptionPane.showMessageDialog(rootPane, "Something went wrong");
+                System.out.println(e);
+        }
     }//GEN-LAST:event_registerBtnActionPerformed
 
     private void clearBtnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearBtnMouseEntered
