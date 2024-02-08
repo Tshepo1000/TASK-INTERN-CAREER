@@ -57,7 +57,7 @@ public class Register extends javax.swing.JFrame {
     public Register() {
         initComponents();
         // Add a JPanel with a background image
-        ImagePanel imagePanel = new ImagePanel("C:\\Users\\Tshepo T Sekete\\Desktop\\TASK-INTERN-CAREER\\School_portal\\images\\sau-helps.jpg", 0.8f);
+        ImagePanel imagePanel = new ImagePanel("C:\\Users\\Tshepo T Sekete\\Desktop\\TASK-INTERN-CAREER\\School_portal\\images\\sau-helps.jpg", 0.4f);
         setContentPane(imagePanel);
 
         imagePanel.add(jPanel1);
@@ -334,6 +334,7 @@ public class Register extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void passwordTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusGained
@@ -348,6 +349,16 @@ public class Register extends javax.swing.JFrame {
         {
             passwordTxt.setText("Password");
         }
+
+        if(confPasswordTxt.getText() != passwordTxt.getText()){
+            passwordTxt.setForeground(Color.red);
+            confPasswordTxt.setForeground(Color.red);
+        }
+        if(confPasswordTxt.getText().equals(passwordTxt.getText())){
+            passwordTxt.setForeground(new java.awt.Color(51, 51, 51));
+            confPasswordTxt.setForeground(new java.awt.Color(51, 51, 51));
+        }
+        
     }//GEN-LAST:event_passwordTxtFocusLost
 
     private void surnameTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_surnameTxtFocusGained
@@ -425,6 +436,15 @@ public class Register extends javax.swing.JFrame {
     private void confPasswordTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_confPasswordTxtFocusLost
         if(confPasswordTxt.getText().equals("")){
             confPasswordTxt.setText("Password");
+        }
+
+        if(confPasswordTxt.getText() != passwordTxt.getText()){
+            passwordTxt.setForeground(Color.red);
+            confPasswordTxt.setForeground(Color.red);
+        }
+        if(confPasswordTxt.getText().equals(passwordTxt.getText())){
+            passwordTxt.setForeground(new java.awt.Color(51, 51, 51));
+            confPasswordTxt.setForeground(new java.awt.Color(51, 51, 51));
         }
     }//GEN-LAST:event_confPasswordTxtFocusLost
 
