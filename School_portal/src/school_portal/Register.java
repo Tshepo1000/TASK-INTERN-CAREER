@@ -476,9 +476,15 @@ public class Register extends javax.swing.JFrame {
                 Statement s = db.myCon().createStatement();
                 if(password.equals(confirmPass) && password.length() >= 8)
                 {
-                    s.executeUpdate("INSERT INTO users (Name, Surname, User_Name, Email, Phone, Password, Role)" + "VALUES ('"+name+"', '"+surname+"','"+email+"', '"+email+"', '"+phone+"', '"+password+"', '"+role+"')");
+                    if(role.equals("Student")){
+                        s.executeUpdate("INSERT INTO students (Name, Surname, Username, Email, Mobile, Password)" + "VALUES ('"+name+"', '"+surname+"','"+email+"', '"+email+"', '"+phone+"', '"+password+"')");
 
-                    JOptionPane.showMessageDialog(rootPane, "Account created successfully.");
+                        JOptionPane.showMessageDialog(rootPane, "Account created successfully.");
+                    }else if(role.equals("Teacher")){
+                        s.executeUpdate("INSERT INTO teachers (Name, Surname, Username, Email, Mobile, Password)" + "VALUES ('"+name+"', '"+surname+"','"+email+"', '"+email+"', '"+phone+"', '"+password+"')");
+
+                        JOptionPane.showMessageDialog(rootPane, "Account created successfully.");
+                    }
                 }
                 else
                 {

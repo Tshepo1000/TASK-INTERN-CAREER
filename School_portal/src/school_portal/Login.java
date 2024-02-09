@@ -298,19 +298,26 @@ public class Login extends javax.swing.JFrame
             }
             else{
                 //sql query for username and password comparisons
-                String sql = " SELECT * FROM users WHERE User_Name=? AND Password=? AND Role=?";
+                String sql = "";
+                if(userRole.equals("Student")){
+                    sql = " SELECT * FROM students WHERE Username=? AND Password=?";
+                }
+
+                else if(userRole.equals("Teacher")){
+                   sql = "SELECT * FROM teachers WHERE Username=? AND Password=?";
+                }
+
                 preparedstatement = connection.prepareCall(sql);
 
                 preparedstatement.setString(1, userName); //username
                 preparedstatement.setString(2, userPassWord); //password
-                preparedstatement.setString(3, userRole); //role
 
                 resultset = preparedstatement.executeQuery();
 
                 if(resultset.next())
                 {
                     JOptionPane.showMessageDialog(rootPane, "Successful"); //successful login attempt
-                    if(roleCbx.getSelectedItem().toString().equals("Student")){
+                    if(userRole.equals("Student")){
                         new StudentsHP().setVisible(true); //displays home_page frame is login in 
                     }else{
                         new TeachersHP().setVisible(true);
@@ -333,7 +340,8 @@ public class Login extends javax.swing.JFrame
         }
         catch(HeadlessException | SQLException e) //catch exceptions for DB related exceptions
         {
-            JOptionPane.showMessageDialog(rootPane, "Something went wrong");
+//            JOptionPane.showMessageDialog(rootPane, "Something went wrong");
+System.out.println(e);
         }
         finally     
         {
@@ -351,7 +359,8 @@ public class Login extends javax.swing.JFrame
             } 
             catch (SQLException ex) 
             {
-                JOptionPane.showMessageDialog(rootPane, "Something went wrong");
+//                JOptionPane.showMessageDialog(rootPane, "Something went wrong");
+System.out.println(ex);
             }
         }
     }//GEN-LAST:event_loginBtnActionPerformed
