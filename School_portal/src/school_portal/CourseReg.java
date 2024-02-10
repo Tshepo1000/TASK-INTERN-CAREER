@@ -56,6 +56,7 @@ public class CourseReg extends javax.swing.JFrame {
         setContentPane(imagePanel1);
 
         imagePanel1.add(availCoursesPanel);
+        imagePanel1.add(backLbl);
     }
 
     @SuppressWarnings("unchecked")
@@ -88,63 +89,114 @@ public class CourseReg extends javax.swing.JFrame {
         submitBtn.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         submitBtn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submitBtn.setOpaque(false);
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitBtnActionPerformed(evt);
+            }
+        });
+
+        backLbl.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backLbl.setText("Back");
+        backLbl.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        backLbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                backLblMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout availCoursesPanelLayout = new javax.swing.GroupLayout(availCoursesPanel);
         availCoursesPanel.setLayout(availCoursesPanelLayout);
         availCoursesPanelLayout.setHorizontalGroup(
             availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(availCoursesPanelLayout.createSequentialGroup()
+                .addGap(67, 67, 67)
                 .addGroup(availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(106, 106, 106)
                         .addComponent(jLabel1))
+                    .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                        .addGap(193, 193, 193)
+                        .addGap(136, 136, 136)
                         .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, availCoursesPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backLbl)
+                .addGap(18, 18, 18))
         );
         availCoursesPanelLayout.setVerticalGroup(
             availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(availCoursesPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(backLbl)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(95, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
-
-        backLbl.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        backLbl.setText("<");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backLbl)
-                    .addComponent(availCoursesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(20, Short.MAX_VALUE))
+            .addComponent(availCoursesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backLbl)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(availCoursesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26))
+            .addComponent(availCoursesPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
+        String courseSelection = selectCourseCbx.getSelectedItem().toString();
+
+        try
+        {
+            if(courseSelection.equals("Select Course"))
+            {
+                JOptionPane.showMessageDialog(rootPane, "Select a course to proceed.");
+            }
+            else
+            {
+               Statement s = db.myCon().createStatement();
+
+               if(courseSelection.equals("JAVA"))
+                    {
+                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
+
+                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                    }
+                    else if(courseSelection.equals("WEB DEV"))
+                    {
+                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
+
+                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                    }
+
+                    else if(courseSelection.equals("PYTHON"))
+                    {
+                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
+
+                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                    }
+            }
+        }
+        catch(HeadlessException | SQLException e)
+        {
+            JOptionPane.showMessageDialog(rootPane, "Something went wrong.");  
+        }
+    }//GEN-LAST:event_submitBtnActionPerformed
+
+    private void backLblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backLblMouseClicked
+        new StudentsHP().setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_backLblMouseClicked
 
     /**
      * @param args the command line arguments
