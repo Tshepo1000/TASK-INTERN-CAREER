@@ -9,9 +9,13 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.HeadlessException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 class ImagePanel1 extends JPanel {
     private Image backgroundImage;
@@ -45,9 +49,10 @@ class ImagePanel1 extends JPanel {
 }
 public class CourseReg extends javax.swing.JFrame {
 
-    /**
-     * Creates new form CourseReg
-     */
+    Connection connection = null;
+    ResultSet resultset = null;
+    PreparedStatement preparedstatement = null;
+
     public CourseReg() {
         initComponents();
         initComponents();
@@ -56,7 +61,8 @@ public class CourseReg extends javax.swing.JFrame {
         setContentPane(imagePanel1);
 
         imagePanel1.add(availCoursesPanel);
-        imagePanel1.add(backLbl);
+
+        connection = db.myCon(); 
     }
 
     @SuppressWarnings("unchecked")
@@ -68,6 +74,9 @@ public class CourseReg extends javax.swing.JFrame {
         selectCourseCbx = new javax.swing.JComboBox<>();
         submitBtn = new javax.swing.JButton();
         backLbl = new javax.swing.JLabel();
+        fullnameTxt = new javax.swing.JTextField();
+        emailTxt = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -104,38 +113,95 @@ public class CourseReg extends javax.swing.JFrame {
             }
         });
 
+        fullnameTxt.setBackground(new java.awt.Color(0, 0, 0, 0));
+        fullnameTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        fullnameTxt.setText("  Fullname");
+        fullnameTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        fullnameTxt.setOpaque(false);
+        fullnameTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                fullnameTxtFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                fullnameTxtFocusLost(evt);
+            }
+        });
+        fullnameTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fullnameTxtActionPerformed(evt);
+            }
+        });
+
+        emailTxt.setBackground(new java.awt.Color(0, 0, 0, 0));
+        emailTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        emailTxt.setText("  Email");
+        emailTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        emailTxt.setOpaque(false);
+        emailTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                emailTxtFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                emailTxtFocusLost(evt);
+            }
+        });
+
+        passwordTxt.setBackground(new java.awt.Color(0, 0, 0, 0));
+        passwordTxt.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        passwordTxt.setText("  Password");
+        passwordTxt.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(0, 0, 0)));
+        passwordTxt.setOpaque(false);
+        passwordTxt.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                passwordTxtFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                passwordTxtFocusLost(evt);
+            }
+        });
+
         javax.swing.GroupLayout availCoursesPanelLayout = new javax.swing.GroupLayout(availCoursesPanel);
         availCoursesPanel.setLayout(availCoursesPanelLayout);
         availCoursesPanelLayout.setHorizontalGroup(
             availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
                 .addGroup(availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                        .addGap(106, 106, 106)
-                        .addComponent(jLabel1))
-                    .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(67, 67, 67)
+                        .addGroup(availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(availCoursesPanelLayout.createSequentialGroup()
+                                .addGap(106, 106, 106)
+                                .addComponent(jLabel1))
+                            .addComponent(selectCourseCbx, 0, 365, Short.MAX_VALUE)
+                            .addComponent(fullnameTxt)
+                            .addComponent(emailTxt)
+                            .addComponent(passwordTxt)))
                     .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
+                        .addGap(27, 27, 27)
+                        .addComponent(backLbl))
+                    .addGroup(availCoursesPanelLayout.createSequentialGroup()
+                        .addGap(195, 195, 195)
                         .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, availCoursesPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(backLbl)
-                .addGap(18, 18, 18))
         );
         availCoursesPanelLayout.setVerticalGroup(
             availCoursesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(availCoursesPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(backLbl)
-                .addGap(40, 40, 40)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
-                .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(27, 27, 27)
+                .addComponent(selectCourseCbx, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(fullnameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addGap(65, 65, 65))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -146,7 +212,7 @@ public class CourseReg extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(availCoursesPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(availCoursesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -155,41 +221,79 @@ public class CourseReg extends javax.swing.JFrame {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         String courseSelection = selectCourseCbx.getSelectedItem().toString();
-
+        String fullname = fullnameTxt.getText();
+        String email = emailTxt.getText();
+        String password = passwordTxt.getText();
+        String userName = emailTxt.getText();
         try
         {
-            if(courseSelection.equals("Select Course"))
+            Statement s = db.myCon().createStatement();
+
+            if(courseSelection.equals("Select Course") || fullname.equals("  Fullname") || email.equals("  Email") || password.equals("  Password"))
             {
-                JOptionPane.showMessageDialog(rootPane, "Select a course to proceed.");
+                JOptionPane.showMessageDialog(rootPane, "All fields are mandatory.");
             }
             else
             {
-               Statement s = db.myCon().createStatement();
+                String sql = "";
+               
 
                if(courseSelection.equals("JAVA"))
-                    {
-                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
+                {
+                    sql = " SELECT * FROM students WHERE Username=? AND Password=?";
+                }
+                else if(courseSelection.equals("WEB DEV"))
+                {
+                    sql = " SELECT * FROM students WHERE Username=? AND Password=?";
+                }
 
-                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                else if(courseSelection.equals("PYTHON"))
+                {
+                    sql = " SELECT * FROM students WHERE Username=? AND Password=?";
+                }
+
+                preparedstatement = connection.prepareCall(sql);
+
+                preparedstatement.setString(1, userName); //username
+                preparedstatement.setString(2, password); //password
+
+                resultset = preparedstatement.executeQuery();
+
+                if(resultset.next())
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Successful"); //successful registration
+                    
+                    if(courseSelection.equals("JAVA"))
+                    {
+                       s.executeUpdate("INSERT INTO courses (Course_name, Fullname, Email)" + "VALUES ('"+courseSelection+"', '"+fullname+"', '"+email+"')");
+                       JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");  
+
+                       new StudentsHP().myCoursesCbx.addItem("JAVA");
                     }
                     else if(courseSelection.equals("WEB DEV"))
                     {
-                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
-
-                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                       s.executeUpdate("INSERT INTO courses (Course_name, Fullname, Email)" + "VALUES ('"+courseSelection+"', '"+fullname+"', '"+email+"')");
+                       JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
                     }
 
                     else if(courseSelection.equals("PYTHON"))
                     {
-                        s.executeUpdate("INSERT INTO courses (Course_name)" + "VALUES ('"+courseSelection+"')");
-
-                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+                       s.executeUpdate("INSERT INTO courses (Course_name, Fullname, Email)" + "VALUES ('"+courseSelection+"', '"+fullname+"', '"+email+"')");
+                       JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
                     }
+                    
+                    
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Student not found.");
+                }
             }
         }
         catch(HeadlessException | SQLException e)
         {
-            JOptionPane.showMessageDialog(rootPane, "Something went wrong.");  
+//            JOptionPane.showMessageDialog(rootPane, "Something went wrong."); 
+System.out.println(e); 
         }
     }//GEN-LAST:event_submitBtnActionPerformed
 
@@ -197,6 +301,34 @@ public class CourseReg extends javax.swing.JFrame {
         new StudentsHP().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backLblMouseClicked
+
+    private void fullnameTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fullnameTxtFocusGained
+        if(fullnameTxt.getText().equals("  Fullname")){fullnameTxt.setText("");}
+    }//GEN-LAST:event_fullnameTxtFocusGained
+
+    private void fullnameTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_fullnameTxtFocusLost
+        if(fullnameTxt.getText().equals("")){fullnameTxt.setText("  Fullname");}
+    }//GEN-LAST:event_fullnameTxtFocusLost
+
+    private void emailTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusGained
+        if(emailTxt.getText().equals("  Email")){emailTxt.setText("");}
+    }//GEN-LAST:event_emailTxtFocusGained
+
+    private void emailTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_emailTxtFocusLost
+        if(emailTxt.getText().equals("")){emailTxt.setText("  Email");}
+    }//GEN-LAST:event_emailTxtFocusLost
+
+    private void passwordTxtFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusGained
+        if(passwordTxt.getText().equals("  Password")){passwordTxt.setText("");}
+    }//GEN-LAST:event_passwordTxtFocusGained
+
+    private void passwordTxtFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_passwordTxtFocusLost
+        if(passwordTxt.getText().equals("")){passwordTxt.setText("  Password");}
+    }//GEN-LAST:event_passwordTxtFocusLost
+
+    private void fullnameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fullnameTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fullnameTxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -236,7 +368,10 @@ public class CourseReg extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel availCoursesPanel;
     private javax.swing.JLabel backLbl;
+    private javax.swing.JTextField emailTxt;
+    private javax.swing.JTextField fullnameTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField passwordTxt;
     private javax.swing.JComboBox<String> selectCourseCbx;
     private javax.swing.JButton submitBtn;
     // End of variables declaration//GEN-END:variables

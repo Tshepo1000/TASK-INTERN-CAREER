@@ -188,7 +188,7 @@ public class StudentsHP extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JComboBox<String> myCoursesCbx;
+    public javax.swing.JComboBox<String> myCoursesCbx;
     private java.awt.Label myCoursesLbl;
     private javax.swing.JComboBox<String> myExamsCbx;
     private java.awt.Label myExamsLbl;
