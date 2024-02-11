@@ -269,17 +269,27 @@ public class CourseReg extends javax.swing.JFrame {
                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");  
 
                        new StudentsHP().myCoursesCbx.addItem("JAVA");
+                       new StudentsHP().setVisible(true);
+                       this.setVisible(false);
                     }
                     else if(courseSelection.equals("WEB DEV"))
                     {
                        s.executeUpdate("INSERT INTO courses (Course_name, Fullname, Email)" + "VALUES ('"+courseSelection+"', '"+fullname+"', '"+email+"')");
                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+
+                        new StudentsHP().myCoursesCbx.addItem("WEB DEV");
+                        new StudentsHP().setVisible(true);
+                        this.setVisible(false);
                     }
 
                     else if(courseSelection.equals("PYTHON"))
                     {
                        s.executeUpdate("INSERT INTO courses (Course_name, Fullname, Email)" + "VALUES ('"+courseSelection+"', '"+fullname+"', '"+email+"')");
                        JOptionPane.showMessageDialog(rootPane, "Successfully Registered.");
+
+                        new StudentsHP().myCoursesCbx.addItem("PYTHON");
+                        new StudentsHP().setVisible(true);
+                        this.setVisible(false);
                     }
                     
                     
